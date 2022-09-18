@@ -5,4 +5,5 @@ urlpatterns = [
     path('all/', views.comments_list),              
     path('<int:pk>/', views.user_comments),
     
+    
 ]

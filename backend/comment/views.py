@@ -13,11 +13,11 @@ from .serializers import CommentSerializer
 @permission_classes([AllowAny])     #added allowany
 def comments_list(request):
     if request.method == 'GET':
-        comments_param = request.query_params.get('video_id')
+        comment_param = request.query_params.get('video_id')
         sort_param = request.query_params.get('sort')
         comment = Comment.objects.all()
-        if comments_param:
-            comment = comment.filter(video_id=comments_param)
+        if comment_param:
+            comment = comment.filter(video_id=comment_param)
         elif sort_param:
             comment = comment.order_by(sort_param)
         serializer = CommentSerializer(comment, many=True)
@@ -36,12 +36,12 @@ def user_comments(request, pk):
     print('User ', f"{request.user.id} {request.user.email} {request.user.username}")
     
     if request.method == 'GET':
-        comments = Comment.objects.filter(user_id=request.user.id)
-        serializer = CommentSerializer(comments, many=True)
+        comment = Comment.objects.filter(user_id=request.user.id)
+        serializer = CommentSerializer(comment, many=True)
         return Response(serializer.data)
     elif request.method == 'PUT':
-        comments = get_object_or_404(Comment, pk=pk)
-        serializer = CommentSerializer(comments, data=request.data)
+        comment = get_object_or_404(Comment, pk=pk)
+        serializer = CommentSerializer(comment, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save(user=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
