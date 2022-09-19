@@ -10,7 +10,7 @@ from .serializers import CommentSerializer
 # Create your views here.
 
 @api_view(['GET', 'POST'])
-@permission_classes([AllowAny])     #added allowany
+@permission_classes([AllowAny])     
 def comments_list(request):
     if request.method == 'GET':
         comment_param = request.query_params.get('video_id')
