@@ -22,7 +22,6 @@ def comments_list(request):
             comment = comment.order_by(sort_param)
         serializer = CommentSerializer(comment, many=True)
         return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
-
     elif request.method == 'POST':
         serializer = CommentSerializer(data=request.data)
         if serializer.is_valid():
@@ -46,3 +45,12 @@ def user_comments(request, pk):
         serializer.save(user=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+
+# Get by ID
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_comments_by_video_id(request,video_id):
+    comments = Comment.objects.filter(video_id=video_id)
+    serializer = CommentSerializer(comments,many=True)
+    return Response(serializer.data, status=status.HTTP_418_IM_A_TEAPOT)
