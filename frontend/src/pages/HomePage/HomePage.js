@@ -33,7 +33,7 @@ const HomePage = () => {
       {videos &&
         videos.map((videos) => (
           <p key={videos.id}>
-            {car.year} {car.model} {car.make}
+            {videos.video_id} {videos.text}
           </p>
         ))}
     </div>

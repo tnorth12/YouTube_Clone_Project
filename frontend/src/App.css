@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 
 *,
 *::before,
@@ -55,4 +55,116 @@ button:hover {
   margin: 5px;
   padding: 3px 7px;
   font-size: 17px;
+}
+
+
+.VideoView{
+  display: grid;
+  grid-template-rows: 4em 80vh auto 10em;
+  grid-template-columns: .5fr 40fr 45fr .5fr;
+  grid-template-areas: 
+  " nav nav nav nav"
+  " vp vp vp vp "
+  " .... comments recomended ."
+  " footer footer footer footer";
+  margin: 0%;
+}
+.NavigationBar{
+  display: grid;
+  grid-area: nav;
+  place-content: center;
+}
+.VideoPlayer{
+  display: grid;
+  place-content: center;  
+  grid-area: vp;
+  position: relative;
+  height: 100%;
+}
+iframe{
+height: 100%;
+width: auto;
+}
+.AddComment{
+  display: grid;
+  grid-area: comments;
+  width: 100%;
+  place-content: center;
+  color: rgb(48, 48, 48);
+}
+ 
+.Recomended{
+  grid-area: recomended; 
+  text-align: center;
+  display: grid;
+  width: 100%;
+  place-content: center;
+  color: rgb(48, 48, 48);
+}
+.Footer{
+  display: grid;
+  place-content: center;
+  grid-area: footer;
+  height: 20px
+}
+.searchView{
+  display: grid;
+  grid-template-rows: 4em 90vh 10em;
+  grid-template-columns: 95vw ;
+  grid-template-areas: 
+  " nav"
+  " body "
+  " footer";
+  margin: 0%;
+}
+.SearchBody{
+  display: grid;
+  grid-area: body;
+} */
+
+.App {
+  text-align: center;
+}
+
+.main-title {
+   color: red
+}
+
+ul {
+  list-style-type: none;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
