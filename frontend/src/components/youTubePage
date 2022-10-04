@@ -1,0 +1,88 @@
+import React, { useState, useEffect } from 'react';
+import youtube from './youtube';
+import axios from 'axios';
+import SearchBar from './SearchBar';
+import VideoDetail from './VideoDetails'
+
+import { KEY } from './localKey';
+import VideoList from './VideoList';
+
+
+
+function Youtubepage() {
+    
+    const [videos, setVideos] = useState([])
+    const [selectedVideo, setSelectedVideo] = useState()
+    // const [comments, setComments] = useState()
+
+    const handleSubmit = async (searchTerm) => {
+        const response = await youtube.get('search', {
+            params: {
+                part: 'snippet',
+                maxResults: 8,
+                key: KEY
+                // q: searchTerm
+            }
+        })
+        setVideos(response.data.items);
+        setSelectedVideo(response.data.items[0]);
+    }
+    
+
+    const onVideoSelect = (video) => {
+        setSelectedVideo(video)
+    }
+
+    useEffect(() => {
+        setSelectedVideo(videos[0]);
+        // setComments();
+    }, [videos]);
+
+    const onSubmit = (c) => {
+        c.preventDefault()
+        const response = axios.post(
+            'http://localhost:8000/comment/',
+            {
+                video_id: c.target[0].value,
+                comment: c.target[1].value
+            }
+        )
+           const comments=getComments(c.target[0].value)
+           console.log('New comments')
+           console.log(comments)
+
+      }
+    
+    const getComments = (video_Id) => {
+        const response = axios.get('http://localhost:8000/comment/'+video_Id)
+        console.log('My Comments')
+        console.log(response)
+        return response.data
+        // return setComments(response.data)
+    }
+
+    return (
+        <div>
+            <SearchBar  handleSubmit={handleSubmit} /> <br /> <br /><br /><br /><br /><br />
+            <VideoDetail video={selectedVideo}/> <br /> <br />
+            <br /> <br /><br /><br /><br /><br />
+            <form onSubmit={onSubmit}>
+                <input type="hidden" id="video_id" name="video_id" value={selectedVideo != null ? selectedVideo.id.vide_Id : ''} />
+                <input type="text" name="comment" placeholder="Comment Here" />
+                <button type="submit" value="new" id='submit'>Add Comment</button>
+            </form>
+            <ul>        
+                <li>Comment One</li>
+                <li>Comment Two</li>
+                <li>Comment Three</li>
+            </ul>
+            <VideoList videos={videos} setSelectedVideo={setSelectedVideo} onVideoSelect={onVideoSelect} />
+        </div>
+
+        
+    )
+
+    
+}
+
+export default Youtubepage;

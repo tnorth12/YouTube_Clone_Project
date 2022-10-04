@@ -14,8 +14,14 @@ const Navbar = () => {
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             <b>React/Django JWT</b>
           </Link>
-        </li>
-        <li>
+        </li>    
+        <li className="search">
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          <button onClick={() => navigate("/search")}>Search</button>
+            <b>React/Django JWT</b>
+          </Link>
+        </li>           
+        <li>     
           {user ? (
             <button onClick={logoutUser}>Logout</button>
           ) : (
