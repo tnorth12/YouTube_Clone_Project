@@ -13,11 +13,11 @@ from .serializers import CommentSerializer
 @permission_classes([AllowAny])     
 def comments_list(request):
     if request.method == 'GET':
-        comment_param = request.query_params.get('video_id')
+        comment_param = request.query_params.get('videoID')
         sort_param = request.query_params.get('sort')
         comment = Comment.objects.all()
         if comment_param:
-            comment = comment.filter(video_id=comment_param)
+            comment = comment.filter(videoID=comment_param)
         elif sort_param:
             comment = comment.order_by(sort_param)
         serializer = CommentSerializer(comment, many=True)
@@ -50,7 +50,7 @@ def user_comments(request, pk):
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def get_comments_by_video_id(request,video_id):
-    comments = Comment.objects.filter(video_id=video_id)
+def get_comments_by_video_id(request,videoID):
+    comments = Comment.objects.filter(video_id=videoID)
     serializer = CommentSerializer(comments,many=True)
     return Response(serializer.data, status=status.HTTP_418_IM_A_TEAPOT)

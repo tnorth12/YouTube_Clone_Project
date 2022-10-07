@@ -1,0 +1,13 @@
+.Header{
+    display: flex;
+    flex-direction: column;
+    color: rgb(37, 41, 146);
+    font-size:xx-large;
+
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}

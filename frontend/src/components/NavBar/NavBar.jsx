@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+// import SearchBar from "../SearchBar/SearchBar";
 import "./NavBar.css";
 
 const Navbar = () => {
@@ -11,17 +12,11 @@ const Navbar = () => {
     <div className="navBar">
       <ul>
         <li className="brand">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>React/Django JWT</b>
+          <Link to="/" style={{ textDecoration: "none", color: "red" }}>
+            <b>YouTube Nation</b>
           </Link>
-        </li>    
-        <li className="search">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-          <button onClick={() => navigate("/search")}>Search</button>
-            <b>React/Django JWT</b>
-          </Link>
-        </li>           
-        <li>     
+        </li>
+        <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>
           ) : (

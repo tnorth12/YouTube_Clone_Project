@@ -1,0 +1,24 @@
+.searchBar{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    
+
+}
+.SearchBar{
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    
+}
+
+.SearchBar > table > tbody > tr {
+    display: flex;
+    flex-direction: row;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+}

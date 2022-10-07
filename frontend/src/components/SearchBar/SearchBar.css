@@ -1,0 +1,29 @@
+.search {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+.buttonbutton{
+    display: flex;
+    align-items: flex-end;
+    background-color: rgb(244, 239, 239);
+    
+}
+
+.search > div {
+    display: flex;
+    width: 75%;
+}
+
+.search > div > input{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 40px;
+    width: 55%;
+    margin: 40px auto;
+    line-height: 56px;
+    position: relative;
+}
